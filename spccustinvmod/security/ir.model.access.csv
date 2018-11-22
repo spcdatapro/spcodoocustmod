@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_spccustinvmod_spccustinvmod,spccustinvmod.spccustinvmod,model_spccustinvmod_spccustinvmod,,1,0,0,0
