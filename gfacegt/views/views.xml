@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="gfacegt_view_company_form">
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="model">res.company</field>
+      <field name="arch" type="xml">
+        <field name="report_footer" position="after">
+          <field name="habilitargface"/>
+        </field>
+        <xpath expr="//notebook" position="inside">
+          <page string="Configuración de GFACE GT (pruebas)" attrs="{'invisible':[('habilitargface', '=', False)]}">
+            <group>
+              <group>
+                <field name="todoapruebasfe"/>
+                <field name="urltstfe"/>
+                <field name="usuariotstfe"/>
+                <field name="contraseniatstfe"/>
+                <field name="nitemisortstfe"/>
+                <field name="establecimientotstfe"/>
+                <field name="idmaquinatstfe"/>
+              </group>
+            </group>
+          </page>
+          <page string="Configuración de GFACE GT (producción)" attrs="{'invisible':[('habilitargface', '=', False)]}">
+            <group>
+              <group>
+                <field name="urlfe"/>
+                <field name="usuariofe"/>
+                <field name="contraseniafe"/>
+                <field name="nitemisorfe"/>
+                <field name="establecimientofe"/>
+                <field name="idmaquinafe"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="gfacegt_invoice_form">
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="model">account.invoice</field>      
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+            <field name="serie"/>
+            <field name="preimpreso"/>
+        </field>
+        <xpath expr="//notebook" position="inside">
+          <page string="Datos GFACE">
+            <group>
+              <field name="confirmae"/>
+              <field name="firmaelectronica"/>
+              <field name="xmlfactura"/>
+              <field name="resultado"/>
+            </group>
+          </page>
+        </xpath>
+      </field>            
+    </record>
+    <!--
+    <record model="ir.ui.view" id="gfacegt.list">
+      <field name="name">gfacegt list</field>
+      <field name="model">gfacegt.gfacegt</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="gfacegt.action_window">
+      <field name="name">gfacegt window</field>
+      <field name="res_model">gfacegt.gfacegt</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="gfacegt.action_server">
+      <field name="name">gfacegt server</field>
+      <field name="model_id" ref="model_gfacegt_gfacegt"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="gfacegt" id="gfacegt.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="gfacegt.menu_1" parent="gfacegt.menu_root"/>
+    <menuitem name="Menu 2" id="gfacegt.menu_2" parent="gfacegt.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="gfacegt.menu_1_list" parent="gfacegt.menu_1"
+              action="gfacegt.action_window"/>
+    <menuitem name="Server to list" id="gfacegt" parent="gfacegt.menu_2"
+              action="gfacegt.action_server"/>
+    -->
+  </data>
+</odoo>
